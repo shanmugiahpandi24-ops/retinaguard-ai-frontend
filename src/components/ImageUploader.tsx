@@ -145,13 +145,13 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({ onFileSelected, on
           onDragLeave={() => setIsDragOver(false)}
           onDrop={handleDrop}
           onClick={() => fileInputRef.current?.click()}
-          className={`group relative flex flex-col items-center justify-center rounded-3xl border-2 border-dashed p-10 md:p-16 text-center cursor-pointer transition-all duration-200 ${
+          className={`relative flex flex-col items-center justify-center rounded-3xl border-2 border-dashed p-10 md:p-16 text-center cursor-pointer transition-colors duration-200 ${
             isDragOver
-              ? 'border-[#0B4A7A] bg-[#EAF5FF] scale-[1.01]'
+              ? 'border-[#0B4A7A] bg-[#EAF5FF]'
               : 'border-[#0B4A7A]/40 bg-[#F4F9FE] hover:border-[#0B4A7A] hover:bg-[#EAF5FF]'
           }`}
         >
-          <div className="relative rounded-2xl bg-[#EAF5FF] border border-[#BAE6FD] p-5 text-[#0B4A7A] group-hover:scale-105 transition duration-200 shadow-xs">
+          <div className="relative rounded-2xl bg-[#EAF5FF] border border-[#BAE6FD] p-5 text-[#0B4A7A] shadow-xs">
             <Upload className="h-10 w-10 text-[#0B4A7A]" />
           </div>
 

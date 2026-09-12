@@ -14,9 +14,9 @@ interface ParallaxCardProps {
 export const ParallaxCard: React.FC<ParallaxCardProps> = ({
   children,
   className = '',
-  depth = 12,
-  tiltAmount = 8,
-  enableGlobalParallax = true,
+  depth = 0,
+  tiltAmount = 0,
+  enableGlobalParallax = false,
   style = {},
   onClick,
 }) => {
@@ -24,8 +24,10 @@ export const ParallaxCard: React.FC<ParallaxCardProps> = ({
   const cardRef = useRef<HTMLDivElement>(null);
   const [localTransform, setLocalTransform] = useState({ rotateX: 0, rotateY: 0, glowX: 50, glowY: 50, isHovered: false });
 
+  const isStatic = depth === 0 && tiltAmount === 0 && !enableGlobalParallax;
+
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!cardRef.current) return;
+    if (isStatic || !cardRef.current) return;
     const rect = cardRef.current.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
@@ -33,7 +35,6 @@ export const ParallaxCard: React.FC<ParallaxCardProps> = ({
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
 
-    // Tilt math: rotating around Y axis moves X, rotating around X axis moves Y (inverted)
     const rotateY = ((x - centerX) / centerX) * tiltAmount;
     const rotateX = -((y - centerY) / centerY) * tiltAmount;
 
@@ -44,10 +45,18 @@ export const ParallaxCard: React.FC<ParallaxCardProps> = ({
   };
 
   const handleMouseLeave = () => {
+    if (isStatic) return;
     setLocalTransform((prev) => ({ ...prev, rotateX: 0, rotateY: 0, isHovered: false }));
   };
 
-  // Calculate combined global + local translation
+  if (isStatic) {
+    return (
+      <div ref={cardRef} onClick={onClick} className={className} style={style}>
+        {children}
+      </div>
+    );
+  }
+
   const globalX = enableGlobalParallax ? globalParallax.normX * depth : 0;
   const globalY = enableGlobalParallax ? globalParallax.normY * depth : 0;
 
@@ -56,7 +65,6 @@ export const ParallaxCard: React.FC<ParallaxCardProps> = ({
     translate3d(${globalX.toFixed(2)}px, ${globalY.toFixed(2)}px, 0px)
     rotateX(${localTransform.rotateX.toFixed(2)}deg)
     rotateY(${localTransform.rotateY.toFixed(2)}deg)
-    scale3d(${localTransform.isHovered ? 1.02 : 1}, ${localTransform.isHovered ? 1.02 : 1}, 1)
   `;
 
   return (
@@ -72,15 +80,6 @@ export const ParallaxCard: React.FC<ParallaxCardProps> = ({
         ...style,
       }}
     >
-      {/* Specular Light Sheen Highlight on Hover */}
-      {localTransform.isHovered && (
-        <div
-          className="pointer-events-none absolute inset-0 rounded-[inherit] transition-opacity duration-300 opacity-40 z-20"
-          style={{
-            background: `radial-gradient(circle at ${localTransform.glowX}% ${localTransform.glowY}%, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0) 65%)`,
-          }}
-        />
-      )}
       {children}
     </div>
   );

@@ -166,8 +166,8 @@ export const Screening: React.FC = () => {
         </div>
       </div>
 
-      {/* Main Workspace Card with Parallax */}
-      <ParallaxCard depth={10} tiltAmount={4}>
+      {/* Main Workspace Card - Static */}
+      <ParallaxCard depth={0} tiltAmount={0} enableGlobalParallax={false}>
         <div className="rounded-3xl border border-[#DCE7F2] bg-[#FFFFFF] p-6 md:p-10 shadow-sm space-y-6">
           {/* State 1: Active Processing Timeline Animation */}
           {loading && (
@@ -268,7 +268,7 @@ export const Screening: React.FC = () => {
         </div>
       </ParallaxCard>
 
-      <ParallaxCard depth={6} tiltAmount={2}>
+      <ParallaxCard depth={0} tiltAmount={0} enableGlobalParallax={false}>
         <SafetyDisclaimer />
       </ParallaxCard>
     </div>

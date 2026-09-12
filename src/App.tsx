@@ -48,6 +48,8 @@ const AuthenticatedLayout: React.FC<{ children: React.ReactNode }> = ({ children
 };
 
 export const App: React.FC = () => {
+  const [isIntroComplete, setIsIntroComplete] = useState(false);
+
   return (
     <AuthProvider>
       <div className="relative min-h-screen bg-[#F8FBFF] text-[#16324F] overflow-x-hidden selection:bg-[#1677C8] selection:text-white">
@@ -55,9 +57,14 @@ export const App: React.FC = () => {
         <ClinicalBackground />
 
         {/* 4-Second Introductory Video Splash Overlay */}
-        <IntroVideoSplashScreen durationSeconds={4} videoSrc="/intro_video.mp4" />
+        <IntroVideoSplashScreen
+          durationSeconds={4}
+          videoSrc="/intro_video.mp4"
+          onComplete={() => setIsIntroComplete(true)}
+        />
 
-        <BrowserRouter>
+        <div className={`transition-opacity duration-1000 ease-out ${isIntroComplete ? 'opacity-100' : 'opacity-0'}`}>
+          <BrowserRouter>
           <Routes>
             {/* Public Routes */}
             <Route path="/" element={<Landing />} />
@@ -144,6 +151,7 @@ export const App: React.FC = () => {
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </BrowserRouter>
+        </div>
       </div>
     </AuthProvider>
   );

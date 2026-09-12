@@ -6,6 +6,7 @@ import { Navbar } from './components/Navbar';
 import { Sidebar } from './components/Sidebar';
 import { SupportChat } from './components/SupportChat';
 import { ClinicalBackground } from './components/ClinicalBackground';
+import { IntroVideoSplashScreen } from './components/IntroVideoSplashScreen';
 
 import { Landing } from './pages/Landing';
 import { Login } from './pages/Login';
@@ -52,6 +53,9 @@ export const App: React.FC = () => {
       <div className="relative min-h-screen bg-[#F8FBFF] text-[#16324F] overflow-x-hidden selection:bg-[#1677C8] selection:text-white">
         {/* Global Animated Ophthalmology & AI MedTech Background System */}
         <ClinicalBackground />
+
+        {/* 4-Second Introductory Video Splash Overlay */}
+        <IntroVideoSplashScreen durationSeconds={4} videoSrc="/intro_video.mp4" />
 
         <BrowserRouter>
           <Routes>

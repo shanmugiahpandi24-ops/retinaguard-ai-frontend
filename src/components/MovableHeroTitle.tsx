@@ -207,8 +207,8 @@ export const MovableHeroTitle: React.FC<MovableHeroTitleProps> = ({ onStart, onE
           className="rounded-2xl border border-[#DCE7F2] bg-white/95 backdrop-blur-sm p-4 shadow-sm text-center hover:border-[#1677C8] transition-all duration-300 hover:-translate-y-1 animate-glow-border"
           style={{ transform: `translate3d(${(normX * 14).toFixed(1)}px, ${(normY * 14).toFixed(1)}px, 0)` }}
         >
-          <span className="text-[#1677C8] font-black text-xl block">GPT-4o</span>
-          <span className="text-[#64748B] text-[10px] font-semibold">LLM Vision Analysis</span>
+          <span className="text-[#1677C8] font-black text-xl block">MULTIMODAL AI</span>
+          <span className="text-[#64748B] text-[10px] font-semibold">Clinical Vision Synthesis</span>
         </div>
 
         <div

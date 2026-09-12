@@ -59,7 +59,7 @@ export const LLMAnalysisCard: React.FC<LLMAnalysisCardProps> = ({ analysis, clas
             <div className="flex items-center gap-2">
               <h3 className="text-lg font-black text-brand-900">LLM Vision Clinical Assistant</h3>
               <span className="rounded-full bg-brand-50 px-2.5 py-0.5 text-[10px] font-mono font-bold text-brand-primary border border-brand-primary/20">
-                GPT-4o Vision Synthesis
+                Multimodal Vision AI Synthesis
               </span>
             </div>
             <p className="text-xs text-medical-text-muted">Automated diagnostic narrative & risk stratification</p>

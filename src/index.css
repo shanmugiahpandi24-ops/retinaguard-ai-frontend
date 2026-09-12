@@ -1,0 +1,349 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #0B4A7A;
+  --primary-dark: #083B63;
+  --primary-bright: #1677C8;
+  --primary-light: #EAF5FF;
+  --primary-soft: #F4F9FE;
+  --page-bg: #F8FBFF;
+  --surface: #FFFFFF;
+  --orange: #F4A340;
+  --orange-light: #FFF4E3;
+  --red: #D9534F;
+  --red-light: #FFF0F0;
+  --green: #249B68;
+  --green-light: #EAF8F1;
+  --text-primary: #16324F;
+  --text-secondary: #64748B;
+  --border: #DCE7F2;
+}
+
+@layer base {
+  body {
+    background-color: var(--page-bg);
+    color: var(--text-primary);
+    font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    overflow-x: hidden;
+  }
+}
+
+/* Subtle Clinical Soft Blue & Retinal Mesh Background Pattern */
+.bg-cyber-grid, .bg-clinical-mesh {
+  background-color: #F8FBFF;
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(11, 74, 122, 0.05), transparent 45%),
+    radial-gradient(circle at 90% 10%, rgba(244, 163, 64, 0.04), transparent 40%),
+    radial-gradient(circle at 50% 80%, rgba(22, 119, 200, 0.03), transparent 50%),
+    linear-gradient(to right, rgba(220, 231, 242, 0.3) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(220, 231, 242, 0.3) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 48px 48px, 48px 48px;
+}
+
+/* Professional Clinical Card */
+.cyber-card, .clinical-card {
+  background: #FFFFFF;
+  border: 1px solid #DCE7F2;
+  border-radius: 18px;
+  box-shadow: 0 2px 8px 0 rgba(11, 74, 122, 0.04);
+  transition: all 200ms ease;
+}
+
+.cyber-card:hover, .clinical-card:hover {
+  border-color: #1677C8;
+  box-shadow: 0 6px 16px 0 rgba(11, 74, 122, 0.08);
+}
+
+/* Custom sleek medical scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F8FBFF;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #DCE7F2;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #1677C8;
+}
+
+/* Hide scrollbar utility */
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Shimmer Light Swipe Animation */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(200%);
+  }
+}
+
+.animate-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.animate-shimmer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: translateX(-100%);
+  background-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0,
+    rgba(11, 74, 122, 0.06) 20%,
+    rgba(11, 74, 122, 0.12) 60%,
+    rgba(255, 255, 255, 0)
+  );
+  animation: shimmer 3s infinite;
+  pointer-events: none;
+}
+
+/* Brand Medical Blue Text Gradient */
+@keyframes textGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient-text {
+  background: linear-gradient(135deg, #0B4A7A, #1677C8, #083B63);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textGradient 6s ease infinite;
+}
+
+/* Hover Lift 3D Effect */
+.hover-lift {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px -4px rgba(11, 74, 122, 0.1);
+  border-color: #1677C8;
+}
+
+/* Clean White Panel */
+.glass-panel {
+  background: #FFFFFF;
+  border: 1px solid #DCE7F2;
+  box-shadow: 0 2px 6px rgba(11, 74, 122, 0.04);
+}
+
+/* MedTech Background Keyframe Animations */
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(3deg); }
+}
+
+@keyframes floatDelayed {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(14px) rotate(-3deg); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.15; transform: scale(1); }
+  50% { opacity: 0.30; transform: scale(1.04); }
+}
+
+@keyframes scanSweep {
+  0% { transform: translateY(-120%); }
+  100% { transform: translateY(220%); }
+}
+
+@keyframes spinSlow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes spinSlowReverse {
+  0% { transform: rotate(360deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.animate-float-slow {
+  animation: floatSlow 9s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: floatDelayed 12s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 5s ease-in-out infinite;
+}
+
+.animate-scan-sweep {
+  animation: scanSweep 6s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: spinSlow 45s linear infinite;
+}
+
+.animate-spin-reverse {
+  animation: spinSlowReverse 55s linear infinite;
+}
+
+/* Advanced MedTech Flow & Radar Sweep Animations */
+@keyframes vesselFlow {
+  0% { stroke-dashoffset: 200; }
+  100% { stroke-dashoffset: 0; }
+}
+
+@keyframes radarSweep {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes pulseHalo {
+  0%, 100% { transform: scale(1); opacity: 0.25; }
+  50% { transform: scale(1.18); opacity: 0.55; }
+}
+
+.animate-vessel-flow {
+  stroke-dasharray: 15, 15;
+  animation: vesselFlow 6s linear infinite;
+}
+
+.animate-radar-sweep {
+  animation: radarSweep 12s linear infinite;
+  transform-origin: center;
+}
+
+.animate-pulse-halo {
+  animation: pulseHalo 4s ease-in-out infinite;
+}
+
+/* Realistic Eye Blink & Double Blink Keyframe Animation */
+@keyframes eyeBlink {
+  0%, 88%, 94%, 100% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+  90% {
+    transform: scaleY(0.06);
+    opacity: 0.85;
+  }
+  92% {
+    transform: scaleY(0.7);
+    opacity: 0.95;
+  }
+}
+
+@keyframes pupilPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+}
+
+@keyframes laserScanVertical {
+  0% {
+    top: 0%;
+    opacity: 0.8;
+  }
+  50% {
+    top: 100%;
+    opacity: 1;
+  }
+  100% {
+    top: 0%;
+    opacity: 0.8;
+  }
+}
+
+@keyframes glowPulseBorder {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(22, 119, 200, 0.2);
+    border-color: rgba(22, 119, 200, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 12px 2px rgba(22, 119, 200, 0.4);
+    border-color: rgba(22, 119, 200, 0.8);
+  }
+}
+
+@keyframes fadeInUpSmooth {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes particleFloat {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translate(10px, -15px) scale(1.2);
+    opacity: 0.7;
+  }
+}
+
+.animate-eye-blink {
+  animation: eyeBlink 4.5s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.animate-pupil-pulse {
+  animation: pupilPulse 3s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.animate-laser-scan {
+  animation: laserScanVertical 4s ease-in-out infinite;
+}
+
+.animate-glow-border {
+  animation: glowPulseBorder 3s ease-in-out infinite;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUpSmooth 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-particle {
+  animation: particleFloat 6s ease-in-out infinite;
+}
+
+
+
+
+

@@ -139,8 +139,8 @@ export const MovableHeroTitle: React.FC<MovableHeroTitleProps> = ({ onStart, onE
         </div>
 
         {/* Hero Title with Center-Origin Letter-Spacing Expansion Animation */}
-        <h1 className="relative text-6xl sm:text-7xl md:text-9xl font-black tracking-tight text-[#0B4A7A] leading-none drop-shadow-md select-none overflow-hidden max-w-full px-2">
-          <span className="inline-flex flex-wrap justify-center items-center bg-gradient-to-r from-[#0B4A7A] via-[#1677C8] to-[#083B63] bg-clip-text text-transparent animate-gradient-text">
+        <h1 className="relative text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tight text-[#0B4A7A] leading-none drop-shadow-md select-none overflow-hidden max-w-full px-2 whitespace-nowrap">
+          <span className="inline-flex flex-nowrap justify-center items-center whitespace-nowrap bg-gradient-to-r from-[#0B4A7A] via-[#1677C8] to-[#083B63] bg-clip-text text-transparent animate-gradient-text">
             {['E', 'Y', 'E', ' ', 'S', 'C', 'R', 'E', 'E', 'N', ' ', 'A', 'I'].map((char, i) => {
               const centerIdx = 6;
               const distFromCenter = Math.abs(i - centerIdx);
@@ -151,6 +151,7 @@ export const MovableHeroTitle: React.FC<MovableHeroTitleProps> = ({ onStart, onE
                   key={i}
                   style={{
                     display: 'inline-block',
+                    whiteSpace: 'pre',
                     transform: prefersReducedMotion || titleAnimated ? 'translate3d(0px, 0px, 0px)' : `translate3d(${initialShiftX}px, 0px, 0px)`,
                     opacity: prefersReducedMotion || titleAnimated ? 1 : 0,
                     transition: prefersReducedMotion
